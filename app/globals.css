@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --color-space-black: #050816;
+  --color-midnight-blue: #0B1120;
+  --color-cosmic-navy: #111827;
+  --color-electric-cyan: #22D3EE;
+  --color-soft-violet: #8B5CF6;
+  --color-starlight-white: #E2E8F0;
+
+  --font-sans: "Outfit", sans-serif;
+  --font-mono: "Courier New", monospace;
+  
+  --animate-scanline: scanline 10s linear infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-glow: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(34, 211, 238, 0.2), inset 0 0 5px rgba(34, 211, 238, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.6), inset 0 0 10px rgba(34, 211, 238, 0.3);
+  }
+}
+
+/* Custom styling systems */
+body {
+  background-color: #050816;
+  color: #E2E8F0;
+  overflow-x: hidden;
+  font-family: "Outfit", sans-serif;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050816;
+}
+::-webkit-scrollbar-thumb {
+  background: #111827;
+  border-radius: 3px;
+  border: 1px solid rgba(34, 211, 238, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.5);
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(11, 17, 32, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-cyan {
+  background: rgba(11, 17, 32, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
+}
+
+.glass-panel-violet {
+  background: rgba(11, 17, 32, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+}
+
+/* Grid Overlay */
+.grid-overlay {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(226, 232, 240, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.02) 1px, transparent 1px);
+}
+
+/* Futuristic HUD Details */
+.hud-corner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: rgba(34, 211, 238, 0.5);
+  border-style: solid;
+  pointer-events: none;
+}
+.hud-corner-tl { top: 0; left: 0; border-width: 1px 0 0 1px; }
+.hud-corner-tr { top: 0; right: 0; border-width: 1px 1px 0 0; }
+.hud-corner-bl { bottom: 0; left: 0; border-width: 0 0 1px 1px; }
+.hud-corner-br { bottom: 0; right: 0; border-width: 0 1px 1px 0; }
+
+/* CRT Scanline Effect */
+.scanline-container::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 20;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
